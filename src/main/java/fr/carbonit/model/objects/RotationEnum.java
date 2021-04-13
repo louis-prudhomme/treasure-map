@@ -1,4 +1,4 @@
-package fr.carbonit.model.parameters;
+package fr.carbonit.model.objects;
 
 import fr.carbonit.exception.ShouldNotHappenException;
 import lombok.AllArgsConstructor;
@@ -10,8 +10,8 @@ import java.util.Arrays;
 @Getter
 public enum RotationEnum {
   NORD('N'),
-  SUD('S'),
   EST('E'),
+  SUD('S'),
   OUEST('O');
 
   private final char underlying;

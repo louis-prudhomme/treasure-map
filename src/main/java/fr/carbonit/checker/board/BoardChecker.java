@@ -3,7 +3,7 @@ package fr.carbonit.checker.board;
 import fr.carbonit.checker.AbstractParameterChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
-import fr.carbonit.model.parameters.Board;
+import fr.carbonit.model.objects.Board;
 import lombok.NonNull;
 
 import java.util.List;

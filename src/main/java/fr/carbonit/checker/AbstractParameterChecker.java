@@ -1,6 +1,6 @@
 package fr.carbonit.checker;
 
-import fr.carbonit.model.parameters.GameObject;
+import fr.carbonit.model.objects.GameObject;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 

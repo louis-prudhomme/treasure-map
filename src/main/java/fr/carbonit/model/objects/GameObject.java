@@ -1,16 +1,16 @@
-package fr.carbonit.model.parameters;
+package fr.carbonit.model.objects;
 
 import fr.carbonit.model.Axes;
 import fr.carbonit.model.ParameterHeadersEnum;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
 
-@Data
+@Getter
 @AllArgsConstructor
 public abstract class GameObject {
+  @NonNull private final ParameterHeadersEnum header;
   @NonNull protected Axes position;
-  @NonNull private ParameterHeadersEnum header;
 
   public String toString() {
     return header.toString();

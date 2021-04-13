@@ -1,7 +1,7 @@
 package fr.carbonit.parser;
 
 import fr.carbonit.model.Axes;
-import fr.carbonit.model.parameters.Board;
+import fr.carbonit.model.objects.Board;
 import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import lombok.NonNull;

@@ -6,7 +6,7 @@ import fr.carbonit.checker.exception.CheckerException;
 import fr.carbonit.checker.exception.ViolationsDetectedException;
 import fr.carbonit.checker.mountain.MountainChecker;
 import fr.carbonit.checker.treasure.TreasureChecker;
-import fr.carbonit.model.parameters.*;
+import fr.carbonit.model.objects.*;
 import lombok.NonNull;
 import utils.ListCastUtils;
 

@@ -3,8 +3,8 @@ package fr.carbonit.checker.treasure;
 import fr.carbonit.checker.AbstractParameterChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
-import fr.carbonit.model.parameters.Board;
-import fr.carbonit.model.parameters.Treasure;
+import fr.carbonit.model.objects.Board;
+import fr.carbonit.model.objects.Treasure;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 

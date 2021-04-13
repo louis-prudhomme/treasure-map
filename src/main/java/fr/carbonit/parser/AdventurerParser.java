@@ -1,9 +1,9 @@
 package fr.carbonit.parser;
 
 import fr.carbonit.model.Axes;
-import fr.carbonit.model.parameters.Adventurer;
-import fr.carbonit.model.parameters.MovementEnum;
-import fr.carbonit.model.parameters.RotationEnum;
+import fr.carbonit.model.actions.ActionEnum;
+import fr.carbonit.model.objects.Adventurer;
+import fr.carbonit.model.objects.RotationEnum;
 import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import lombok.NonNull;
@@ -42,20 +42,20 @@ public class AdventurerParser extends AbstractParameterParser<Adventurer> {
       throw new WrongArgumentFormatException(rotation);
   }
 
-  public @NonNull Queue<MovementEnum> tryParseMovements(@NonNull String movementsSentence)
+  public @NonNull Queue<ActionEnum> tryParseMovements(@NonNull String movementsSentence)
       throws WrongArgumentFormatException {
     if (!movementsSentence
         .chars()
         .mapToObj(c -> (char) c)
         .map(Character::toUpperCase)
-        .allMatch(MovementEnum::isCharKeyOf))
+        .allMatch(ActionEnum::isCharKeyOf))
       throw new WrongArgumentFormatException(movementsSentence);
 
     return movementsSentence
         .chars()
         .mapToObj(c -> (char) c)
         .map(Character::toUpperCase)
-        .map(MovementEnum::get)
+        .map(ActionEnum::get)
         .collect(Collectors.toCollection(LinkedList::new));
   }
 }

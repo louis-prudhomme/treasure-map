@@ -3,8 +3,8 @@ package fr.carbonit.checker.adventurer;
 import fr.carbonit.checker.AbstractParameterChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
-import fr.carbonit.model.parameters.Adventurer;
-import fr.carbonit.model.parameters.Board;
+import fr.carbonit.model.objects.Adventurer;
+import fr.carbonit.model.objects.Board;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 

@@ -1,6 +1,6 @@
 package fr.carbonit.parser;
 
-import fr.carbonit.model.parameters.GameObject;
+import fr.carbonit.model.objects.GameObject;
 import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.WrongArgumentNumberException;
 import lombok.AllArgsConstructor;

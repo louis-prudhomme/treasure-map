@@ -3,8 +3,8 @@ package fr.carbonit.checker.mountain;
 import fr.carbonit.checker.AbstractParameterChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
-import fr.carbonit.model.parameters.Board;
-import fr.carbonit.model.parameters.Mountain;
+import fr.carbonit.model.objects.Board;
+import fr.carbonit.model.objects.Mountain;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 

@@ -1,4 +1,4 @@
-package fr.carbonit.model.parameters;
+package fr.carbonit.model.actions;
 
 import fr.carbonit.exception.ShouldNotHappenException;
 import lombok.AllArgsConstructor;
@@ -8,14 +8,14 @@ import java.util.Arrays;
 
 @AllArgsConstructor
 @Getter
-public enum MovementEnum {
+public enum ActionEnum {
   AVANCER('A'),
   DROITE('D'),
   GAUCHE('G');
 
   private final char underlying;
 
-  public static MovementEnum get(char c) {
+  public static ActionEnum get(char c) {
     return Arrays.stream(values())
         .filter(v -> v.underlying == c)
         .findFirst()
@@ -24,7 +24,7 @@ public enum MovementEnum {
 
   public static boolean isCharKeyOf(char c) {
     return Arrays.stream(values())
-        .map(MovementEnum::getUnderlying)
+        .map(ActionEnum::getUnderlying)
         .anyMatch(character -> character == c);
   }
 }
