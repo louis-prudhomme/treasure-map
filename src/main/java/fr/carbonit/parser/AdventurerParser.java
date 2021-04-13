@@ -8,7 +8,8 @@ import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import lombok.NonNull;
 
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class AdventurerParser extends AbstractParameterParser<Adventurer> {
@@ -26,8 +27,8 @@ public class AdventurerParser extends AbstractParameterParser<Adventurer> {
 
     try {
       return new Adventurer(
-          args[1],
           new Axes(Integer.parseInt(args[2]), Integer.parseInt(args[3])),
+          args[1],
           RotationEnum.get(args[4].charAt(0)),
           tryParseMovements(args[5]));
     } catch (NumberFormatException e) {
@@ -41,11 +42,20 @@ public class AdventurerParser extends AbstractParameterParser<Adventurer> {
       throw new WrongArgumentFormatException(rotation);
   }
 
-  public @NonNull List<MovementEnum> tryParseMovements(@NonNull String movementsSentence)
+  public @NonNull Queue<MovementEnum> tryParseMovements(@NonNull String movementsSentence)
       throws WrongArgumentFormatException {
-    if (!movementsSentence.chars().mapToObj(c -> (char) c).map(Character::toUpperCase).allMatch(MovementEnum::isCharKeyOf))
+    if (!movementsSentence
+        .chars()
+        .mapToObj(c -> (char) c)
+        .map(Character::toUpperCase)
+        .allMatch(MovementEnum::isCharKeyOf))
       throw new WrongArgumentFormatException(movementsSentence);
 
-    return movementsSentence.chars().mapToObj(c -> (char) c).map(Character::toUpperCase).map(MovementEnum::get).collect(Collectors.toList());
+    return movementsSentence
+        .chars()
+        .mapToObj(c -> (char) c)
+        .map(Character::toUpperCase)
+        .map(MovementEnum::get)
+        .collect(Collectors.toCollection(LinkedList::new));
   }
 }

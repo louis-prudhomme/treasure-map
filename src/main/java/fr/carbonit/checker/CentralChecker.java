@@ -8,21 +8,20 @@ import fr.carbonit.checker.mountain.MountainChecker;
 import fr.carbonit.checker.treasure.TreasureChecker;
 import fr.carbonit.model.parameters.*;
 import lombok.NonNull;
+import utils.ListCastUtils;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CentralChecker {
   @NonNull private final List<GameObject> parsedParameters;
-  @NonNull private final Map<Class<? extends GameObject>, AbstractParameterChecker<?>> checkerMap;
+  @NonNull private final Board reference;
   @NonNull private List<Violation> violations;
-  @NonNull private Board reference;
 
   public CentralChecker(@NonNull List<GameObject> parsedParameters) throws CheckerException {
     this.parsedParameters = parsedParameters;
+    this.violations = List.of();
     this.reference = tryCheckBoard();
-    checkerMap = Map.ofEntries(Map.entry(Mountain.class, new MountainChecker(reference)));
   }
 
   public @NonNull Board tryCheckBoard() throws ViolationsDetectedException {
@@ -37,22 +36,18 @@ public class CentralChecker {
     return boards.get(0);
   }
 
-  public @NonNull List<Violation> checkParameters() throws ViolationsDetectedException {
+  public @NonNull void checkParametersOrThrow() throws ViolationsDetectedException {
     violations.addAll(
-        new AdventurerChecker(reference).checkParameters(parameterAggregator(Adventurer.class)));
+        new AdventurerChecker(reference)
+            .checkParameters(
+                ListCastUtils.parameterAggregator(parsedParameters, Adventurer.class)));
     violations.addAll(
-        new MountainChecker(reference).checkParameters(parameterAggregator(Mountain.class)));
+        new MountainChecker(reference)
+            .checkParameters(ListCastUtils.parameterAggregator(parsedParameters, Mountain.class)));
     violations.addAll(
-        new TreasureChecker(reference).checkParameters(parameterAggregator(Treasure.class)));
+        new TreasureChecker(reference)
+            .checkParameters(ListCastUtils.parameterAggregator(parsedParameters, Treasure.class)));
 
     if (violations.size() != 0) throw new ViolationsDetectedException(violations);
-    return violations;
-  }
-
-  private @NonNull <T extends GameObject> List<T> parameterAggregator(@NonNull Class<T> clazz) {
-    return parsedParameters.stream()
-        .filter(gameObject -> gameObject.getClass().equals(clazz))
-        .map(clazz::cast)
-        .collect(Collectors.toList());
   }
 }

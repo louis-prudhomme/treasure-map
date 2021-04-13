@@ -1,25 +1,12 @@
 package fr.carbonit.model.parameters;
 
 import fr.carbonit.model.Axes;
-import fr.carbonit.model.exception.GameOutOfBoundsException;
-import lombok.Getter;
+import fr.carbonit.model.ParameterHeadersEnum;
 import lombok.NonNull;
 
-public class Board implements GameObject {
-  @NonNull @Getter private final Axes position;
-  @NonNull private final GameObject[][] map;
-
+public class Board extends GameObject {
   public Board(@NonNull Axes size) {
-    this.position = size;
-    this.map = new GameObject[size.getX()][size.getY()];
-  }
-
-  public void addGameObject(@NonNull GameObject object) throws GameOutOfBoundsException {
-    // todo gameOOB into runtime ?
-    if (!isPositionWithin(object.getPosition()))
-      throw new GameOutOfBoundsException(object.getPosition(), position);
-
-    map[object.getPosition().getX()][object.getPosition().getY()] = object;
+    super(size, ParameterHeadersEnum.BOARD);
   }
 
   public boolean isPositionWithin(@NonNull Axes external) {

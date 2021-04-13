@@ -1,9 +1,7 @@
 package fr.carbonit.model;
 
 import fr.carbonit.exception.ShouldNotHappenException;
-import fr.carbonit.model.parameters.MovementEnum;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.Arrays;
 
@@ -14,7 +12,7 @@ public enum ParameterHeadersEnum {
   MOUNTAIN('M'),
   ADVENTURER('A');
 
-  @Getter private final char underlying;
+  private final char underlying;
 
   public static ParameterHeadersEnum get(char c) {
     return Arrays.stream(values())
@@ -25,7 +23,12 @@ public enum ParameterHeadersEnum {
 
   public static boolean isCharKeyOf(char c) {
     return Arrays.stream(values())
-            .map(ParameterHeadersEnum::getUnderlying)
-            .anyMatch(character -> character == Character.toUpperCase(c));
+        .map(e -> e.underlying)
+        .anyMatch(character -> character == Character.toUpperCase(c));
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(underlying);
   }
 }

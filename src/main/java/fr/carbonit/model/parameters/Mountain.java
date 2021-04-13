@@ -1,9 +1,11 @@
 package fr.carbonit.model.parameters;
 
 import fr.carbonit.model.Axes;
-import lombok.Data;
+import fr.carbonit.model.ParameterHeadersEnum;
+import lombok.NonNull;
 
-@Data
-public class Mountain implements GameObject {
-  private final Axes position;
+public class Mountain extends GameObject {
+  public Mountain(@NonNull Axes position) {
+    super(position, ParameterHeadersEnum.MOUNTAIN);
+  }
 }

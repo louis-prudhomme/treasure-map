@@ -1,11 +1,21 @@
 package fr.carbonit.model.parameters;
 
 import fr.carbonit.model.Axes;
-import lombok.Data;
+import fr.carbonit.model.ParameterHeadersEnum;
+import lombok.Getter;
 import lombok.NonNull;
 
-@Data
-public class Treasure implements GameObject {
-  @NonNull private final Axes position;
+@Getter
+public class Treasure extends GameObject {
   private final int worth;
+
+  public Treasure(@NonNull Axes position, int worth) {
+    super(position, ParameterHeadersEnum.TREASURE);
+    this.worth = worth;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("T(%d)", worth);
+  }
 }
