@@ -1,4 +1,4 @@
-package utils;
+package fr.carbonit.utils;
 
 import fr.carbonit.model.objects.GameObject;
 import lombok.NonNull;

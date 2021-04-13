@@ -7,8 +7,8 @@ import fr.carbonit.checker.exception.ViolationsDetectedException;
 import fr.carbonit.checker.mountain.MountainChecker;
 import fr.carbonit.checker.treasure.TreasureChecker;
 import fr.carbonit.model.objects.*;
+import fr.carbonit.utils.ListCastUtils;
 import lombok.NonNull;
-import utils.ListCastUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

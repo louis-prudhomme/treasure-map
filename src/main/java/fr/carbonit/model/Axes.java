@@ -9,15 +9,10 @@ public class Axes {
   private final int y;
 
   public boolean isPositionWithin(@NonNull Axes external) {
-    return x >= external.getX() || y >= external.getY();
-  }
-
-  public Axes moveX(int qte) {
-    return new Axes(x + qte, y);
-  }
-
-  public Axes moveY(int qte) {
-    return new Axes(x, y + qte);
+    return external.getX() < x
+        && external.getY() < y
+        && external.getX() >= 0
+        && external.getY() >= 0;
   }
 
   public Axes moveXWithin(int qte, int bound) {

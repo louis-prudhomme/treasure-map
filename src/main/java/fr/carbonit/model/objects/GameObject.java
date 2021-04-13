@@ -1,7 +1,6 @@
 package fr.carbonit.model.objects;
 
 import fr.carbonit.model.Axes;
-import fr.carbonit.model.ParameterHeadersEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -13,6 +12,6 @@ public abstract class GameObject {
   @NonNull protected Axes position;
 
   public String toString() {
-    return header.toString();
+    return String.valueOf(header.getUnderlying());
   }
 }

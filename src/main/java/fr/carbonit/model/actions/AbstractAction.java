@@ -1,6 +1,6 @@
 package fr.carbonit.model.actions;
 
-import fr.carbonit.model.Game;
+import fr.carbonit.engine.Game;
 import fr.carbonit.model.objects.Adventurer;
 import lombok.NonNull;
 

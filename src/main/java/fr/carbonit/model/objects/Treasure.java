@@ -1,7 +1,6 @@
 package fr.carbonit.model.objects;
 
 import fr.carbonit.model.Axes;
-import fr.carbonit.model.ParameterHeadersEnum;
 import fr.carbonit.model.objects.exception.TreasureOutOfBoundsException;
 import lombok.Getter;
 import lombok.NonNull;
