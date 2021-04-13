@@ -10,7 +10,7 @@ public class Treasure extends GameObject {
   private int worth;
 
   public Treasure(@NonNull Axes position, int worth) {
-    super(ParameterHeadersEnum.TREASURE, position);
+    super(GameObjectHeadersEnum.TREASURE, position);
     this.worth = worth;
   }
 

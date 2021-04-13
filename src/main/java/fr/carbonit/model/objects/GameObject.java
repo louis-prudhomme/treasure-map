@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 public abstract class GameObject {
-  @NonNull private final ParameterHeadersEnum header;
+  @NonNull private final GameObjectHeadersEnum header;
 
   @NonNull
   @Setter(AccessLevel.PROTECTED)

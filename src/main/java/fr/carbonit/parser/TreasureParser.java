@@ -6,7 +6,7 @@ import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import lombok.NonNull;
 
-public class TreasureParser extends AbstractParameterParser<Treasure> {
+public class TreasureParser extends AbstractGameObjectParser<Treasure> {
   private static final int EXPECTED_NUMBER_ARGUMENTS = 4;
 
   public TreasureParser() {

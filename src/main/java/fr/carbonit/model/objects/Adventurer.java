@@ -23,7 +23,7 @@ public class Adventurer extends GameObject {
       @NonNull String name,
       @NonNull RotationEnum rotation,
       @NonNull Queue<ActionEnum> movements) {
-    super(ParameterHeadersEnum.ADVENTURER, position);
+    super(GameObjectHeadersEnum.ADVENTURER, position);
     this.name = name;
     this.rotation = rotation;
     this.movements = movements;

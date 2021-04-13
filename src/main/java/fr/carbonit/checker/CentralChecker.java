@@ -36,7 +36,7 @@ public class CentralChecker {
     return boards.get(0);
   }
 
-  public @NonNull void checkParametersOrThrow() throws ViolationsDetectedException {
+  public void checkParametersOrThrow() throws ViolationsDetectedException {
     violations.addAll(
         new AdventurerChecker(reference)
             .checkParameters(

@@ -5,6 +5,6 @@ import lombok.NonNull;
 
 public class Mountain extends GameObject {
   public Mountain(@NonNull Axes position) {
-    super(ParameterHeadersEnum.MOUNTAIN, position);
+    super(GameObjectHeadersEnum.MOUNTAIN, position);
   }
 }

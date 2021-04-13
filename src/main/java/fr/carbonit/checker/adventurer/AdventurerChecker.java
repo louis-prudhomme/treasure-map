@@ -1,6 +1,6 @@
 package fr.carbonit.checker.adventurer;
 
-import fr.carbonit.checker.AbstractParameterChecker;
+import fr.carbonit.checker.AbstractGameObjectChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
 import fr.carbonit.model.objects.Adventurer;
@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 @AllArgsConstructor
-public class AdventurerChecker extends AbstractParameterChecker<Adventurer> {
+public class AdventurerChecker extends AbstractGameObjectChecker<Adventurer> {
   private final Set<String> names = new HashSet<>();
 
   @NonNull private final Board referenceBoard;

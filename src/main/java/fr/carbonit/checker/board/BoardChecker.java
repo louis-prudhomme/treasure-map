@@ -1,6 +1,6 @@
 package fr.carbonit.checker.board;
 
-import fr.carbonit.checker.AbstractParameterChecker;
+import fr.carbonit.checker.AbstractGameObjectChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
 import fr.carbonit.model.objects.Board;
@@ -9,7 +9,7 @@ import lombok.NonNull;
 import java.util.List;
 import java.util.function.Function;
 
-public class BoardChecker extends AbstractParameterChecker<Board> {
+public class BoardChecker extends AbstractGameObjectChecker<Board> {
   private int boardCounter = 0;
 
   @Override

@@ -2,7 +2,7 @@ package fr.carbonit.writer;
 
 import fr.carbonit.engine.Game;
 import fr.carbonit.model.objects.GameObject;
-import fr.carbonit.model.objects.ParameterHeadersEnum;
+import fr.carbonit.model.objects.GameObjectHeadersEnum;
 import lombok.NonNull;
 
 import java.io.FileWriter;
@@ -13,12 +13,13 @@ public class CentralWriter {
   @NonNull private static final String PATH = "";
 
   @NonNull
-  private static final Map<ParameterHeadersEnum, AbstractGameObjectWriter<?>> writerMap =
+  private static final Map<GameObjectHeadersEnum, AbstractGameObjectWriter<?>> writerMap =
       Map.ofEntries(
-          Map.entry(ParameterHeadersEnum.ADVENTURER, new AdventurerWriter()),
-          Map.entry(ParameterHeadersEnum.TREASURE, new TreasureWriter()),
-          Map.entry(ParameterHeadersEnum.MOUNTAIN, new MountainWriter()),
-          Map.entry(ParameterHeadersEnum.BOARD, new BoardWriter()));
+          Map.entry(GameObjectHeadersEnum.ADVENTURER, new AdventurerWriter()),
+          Map.entry(GameObjectHeadersEnum.TREASURE, new TreasureWriter()),
+          Map.entry(GameObjectHeadersEnum.MOUNTAIN, new MountainWriter()),
+          Map.entry(GameObjectHeadersEnum.BOARD, new BoardWriter()));
+
   @NonNull private final String fileName;
   @NonNull private final Game game;
   @NonNull private FileWriter report;

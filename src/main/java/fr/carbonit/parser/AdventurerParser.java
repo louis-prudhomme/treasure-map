@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-public class AdventurerParser extends AbstractParameterParser<Adventurer> {
+public class AdventurerParser extends AbstractGameObjectParser<Adventurer> {
   private static final int EXPECTED_NUMBER_ARGUMENTS = 6;
 
   public AdventurerParser() {

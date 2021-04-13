@@ -17,7 +17,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static fr.carbonit.model.objects.ParameterHeadersEnum.*;
+import static fr.carbonit.model.objects.GameObjectHeadersEnum.*;
 
 @Data
 public class Game {

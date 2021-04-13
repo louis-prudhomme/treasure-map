@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.util.Arrays;
 
 @AllArgsConstructor
-public enum ParameterHeadersEnum {
+public enum GameObjectHeadersEnum {
   BOARD('C'),
   TREASURE('T'),
   MOUNTAIN('M'),
@@ -15,15 +15,15 @@ public enum ParameterHeadersEnum {
 
   @Getter private final char underlying;
 
-  public static ParameterHeadersEnum get(char c) {
-    return Arrays.stream(ParameterHeadersEnum.values())
+  public static GameObjectHeadersEnum get(char c) {
+    return Arrays.stream(GameObjectHeadersEnum.values())
         .filter(v -> v.underlying == Character.toUpperCase(c))
         .findFirst()
         .orElseThrow(ShouldNotHappenException::new);
   }
 
   public static boolean isCharKeyOf(char c) {
-    return Arrays.stream(ParameterHeadersEnum.values())
+    return Arrays.stream(GameObjectHeadersEnum.values())
         .map(e -> e.underlying)
         .anyMatch(character -> character == Character.toUpperCase(c));
   }

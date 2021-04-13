@@ -6,7 +6,7 @@ import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import lombok.NonNull;
 
-public class MountainParser extends AbstractParameterParser<Mountain> {
+public class MountainParser extends AbstractGameObjectParser<Mountain> {
   private static final int EXPECTED_NUMBER_ARGUMENTS = 3;
 
   public MountainParser() {

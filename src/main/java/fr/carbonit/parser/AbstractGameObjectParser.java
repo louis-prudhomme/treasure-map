@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
 @AllArgsConstructor
-public abstract class AbstractParameterParser<T extends GameObject> {
+public abstract class AbstractGameObjectParser<T extends GameObject> {
   protected static final String SEPARATOR = " - ";
 
   private final int expectedNumberOfParameters;

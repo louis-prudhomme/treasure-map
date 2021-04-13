@@ -10,7 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
-public abstract class AbstractParameterChecker<T extends GameObject> {
+public abstract class AbstractGameObjectChecker<T extends GameObject> {
   protected abstract @NonNull List<Function<T, Violation>> getChecks();
 
   public @NonNull List<Violation> checkParameters(@NonNull List<T> parameters) {

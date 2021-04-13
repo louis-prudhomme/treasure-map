@@ -1,6 +1,6 @@
 package fr.carbonit.checker.mountain;
 
-import fr.carbonit.checker.AbstractParameterChecker;
+import fr.carbonit.checker.AbstractGameObjectChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
 import fr.carbonit.model.objects.Board;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Function;
 
 @AllArgsConstructor
-public class MountainChecker extends AbstractParameterChecker<Mountain> {
+public class MountainChecker extends AbstractGameObjectChecker<Mountain> {
   @NonNull private final Board referenceBoard;
 
   @Override

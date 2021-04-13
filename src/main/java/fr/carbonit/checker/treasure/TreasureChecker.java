@@ -1,6 +1,6 @@
 package fr.carbonit.checker.treasure;
 
-import fr.carbonit.checker.AbstractParameterChecker;
+import fr.carbonit.checker.AbstractGameObjectChecker;
 import fr.carbonit.checker.PositionChecker;
 import fr.carbonit.checker.Violation;
 import fr.carbonit.model.objects.Board;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Function;
 
 @AllArgsConstructor
-public class TreasureChecker extends AbstractParameterChecker<Treasure> {
+public class TreasureChecker extends AbstractGameObjectChecker<Treasure> {
   @NonNull private final Board referenceBoard;
 
   @Override

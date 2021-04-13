@@ -4,7 +4,7 @@ import fr.carbonit.engine.Game;
 import fr.carbonit.model.Axes;
 import fr.carbonit.model.objects.Adventurer;
 import fr.carbonit.model.objects.GameObject;
-import fr.carbonit.model.objects.ParameterHeadersEnum;
+import fr.carbonit.model.objects.GameObjectHeadersEnum;
 import lombok.NonNull;
 
 public class ForwardAction extends AbstractAction {
@@ -31,7 +31,7 @@ public class ForwardAction extends AbstractAction {
   public boolean canMoveIn(@NonNull Game game, @NonNull Axes position) {
     return game.getDimension().isPositionWithin(position) && game.get(position)
             .map(GameObject::getHeader)
-            .map(header -> header == ParameterHeadersEnum.TREASURE)
+            .map(header -> header == GameObjectHeadersEnum.TREASURE)
             .orElse(true);
   }
 
