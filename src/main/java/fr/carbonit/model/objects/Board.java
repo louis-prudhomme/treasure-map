@@ -9,6 +9,6 @@ public class Board extends GameObject {
   }
 
   public boolean isPositionWithin(@NonNull Axes external) {
-    return position.getY() >= external.getY() || position.getX() >= external.getX();
+    return position.isPositionWithin(external);
   }
 }

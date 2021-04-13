@@ -9,10 +9,7 @@ public class Axes {
   private final int x;
 
   public boolean isPositionWithin(@NonNull Axes external) {
-    return external.getY() < y
-        && external.getX() < x
-        && external.getY() >= 0
-        && external.getX() >= 0;
+    return external.getY() < y && external.getX() < x;
   }
 
   public Axes moveXWithin(int qte, int bound) {

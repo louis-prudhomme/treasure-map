@@ -14,8 +14,8 @@ import java.util.Queue;
 public class Adventurer extends GameObject {
   @NonNull @EqualsAndHashCode.Include
   private final String name;
+  @NonNull private final Queue<ActionEnum> movements;
   @NonNull @Setter private RotationEnum rotation;
-  @NonNull private Queue<ActionEnum> movements;
   private int numberOfTreasures;
 
   public Adventurer(
@@ -30,8 +30,9 @@ public class Adventurer extends GameObject {
     this.numberOfTreasures = 0;
   }
 
+  @Override
   public void setPosition(@NonNull Axes position) {
-    this.position = position;
+    super.setPosition(position);
   }
 
   public void pickupTreasure() {
