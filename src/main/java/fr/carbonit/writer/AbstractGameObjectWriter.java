@@ -17,7 +17,7 @@ public abstract class AbstractGameObjectWriter<T extends GameObject> {
     return String.join(
         SEPARATOR,
         String.valueOf(toWrite.getHeader().getUnderlying()),
-        String.valueOf(toWrite.getPosition().getX()),
-        String.valueOf(toWrite.getPosition().getY()));
+        String.valueOf(toWrite.getPosition().getY()),
+        String.valueOf(toWrite.getPosition().getX()));
   }
 }

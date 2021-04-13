@@ -5,21 +5,21 @@ import lombok.NonNull;
 
 @Data
 public class Axes {
-  private final int x;
   private final int y;
+  private final int x;
 
   public boolean isPositionWithin(@NonNull Axes external) {
-    return external.getX() < x
-        && external.getY() < y
-        && external.getX() >= 0
-        && external.getY() >= 0;
+    return external.getY() < y
+        && external.getX() < x
+        && external.getY() >= 0
+        && external.getX() >= 0;
   }
 
   public Axes moveXWithin(int qte, int bound) {
-    return new Axes(Math.floorMod(x + qte, bound), y);
+    return new Axes(Math.floorMod(y + qte, bound), x);
   }
 
   public Axes moveYWithin(int qte, int bound) {
-    return new Axes(x, Math.floorMod(y + qte, bound));
+    return new Axes(y, Math.floorMod(x + qte, bound));
   }
 }

@@ -18,7 +18,7 @@ public class MountainParser extends AbstractParameterParser<Mountain> {
     var args = super.trySplit(line);
 
     try {
-      return new Mountain(new Axes(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
+      return new Mountain(new Axes(Integer.parseInt(args[2]), Integer.parseInt(args[1])));
     } catch (NumberFormatException e) {
       throw new WrongArgumentFormatException(e);
     }

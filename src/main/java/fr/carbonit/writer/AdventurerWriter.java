@@ -14,8 +14,8 @@ public class AdventurerWriter extends AbstractGameObjectWriter<Adventurer> {
         SEPARATOR,
         String.valueOf(toWrite.getHeader().getUnderlying()),
         toWrite.getName(),
-        String.valueOf(toWrite.getPosition().getX()),
         String.valueOf(toWrite.getPosition().getY()),
+        String.valueOf(toWrite.getPosition().getX()),
         String.valueOf(toWrite.getRotation().getUnderlying()),
         String.valueOf(toWrite.getNumberOfTreasures()));
   }

@@ -19,7 +19,7 @@ public class TreasureParser extends AbstractParameterParser<Treasure> {
 
     try {
       return new Treasure(
-          new Axes(Integer.parseInt(args[1]), Integer.parseInt(args[2])),
+          new Axes(Integer.parseInt(args[2]), Integer.parseInt(args[1])),
           Integer.parseInt(args[3]));
     } catch (NumberFormatException e) {
       throw new WrongArgumentFormatException(e);

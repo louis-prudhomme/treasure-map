@@ -18,7 +18,7 @@ public class BoardParser extends AbstractParameterParser<Board> {
     var args = super.trySplit(line);
 
     try {
-      return new Board(new Axes(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
+      return new Board(new Axes(Integer.parseInt(args[2]), Integer.parseInt(args[1])));
     } catch (NumberFormatException e) {
       throw new WrongArgumentFormatException(e);
     }

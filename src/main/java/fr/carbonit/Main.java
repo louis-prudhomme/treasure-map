@@ -11,6 +11,7 @@ import fr.carbonit.parser.CentralParser;
 import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.utils.ListCastUtils;
 import fr.carbonit.writer.CentralWriter;
+import lombok.NonNull;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(@NonNull String[] args) {
     try {
       CentralParser parser = new CentralParser(args[0]);
       List<GameObject> parsed = parser.parseParameters();
@@ -37,6 +38,7 @@ public class Main {
 
       CentralWriter writer = new CentralWriter(Instant.now().getEpochSecond() + ".report", game);
       writer.redactReport();
+      System.out.println(game);
     } catch (ParserException | CheckerException | IOException e) {
       throw new ShouldNotHappenException(e);
     }

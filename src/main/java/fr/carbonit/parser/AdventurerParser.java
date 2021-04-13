@@ -27,7 +27,7 @@ public class AdventurerParser extends AbstractParameterParser<Adventurer> {
 
     try {
       return new Adventurer(
-          new Axes(Integer.parseInt(args[2]), Integer.parseInt(args[3])),
+          new Axes(Integer.parseInt(args[3]), Integer.parseInt(args[2])),
           args[1],
           RotationEnum.get(args[4].charAt(0)),
           tryParseMovements(args[5]));

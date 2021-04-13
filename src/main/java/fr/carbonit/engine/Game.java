@@ -30,7 +30,7 @@ public class Game {
     this.underlying = underlying;
     this.dimension = underlying.getPosition();
 
-    this.map = new GameObject[this.dimension.getX()][this.dimension.getY()];
+    this.map = new GameObject[this.dimension.getY()][this.dimension.getX()];
     this.stash = new LinkedList<>();
   }
 
@@ -51,7 +51,7 @@ public class Game {
         pickupTreasure(((Adventurer) toAdd), ((Treasure) tile.get()));
       else throw new TileNotEmptyException(toAdd.getPosition(), get(toAdd.getPosition()));
 
-    map[toAdd.getPosition().getX()][toAdd.getPosition().getY()] = toAdd;
+    map[toAdd.getPosition().getY()][toAdd.getPosition().getX()] = toAdd;
   }
 
   private void pickupTreasure(@NonNull Adventurer picker, @NonNull Treasure picked) {
@@ -63,7 +63,7 @@ public class Game {
   }
 
   public @NonNull Optional<GameObject> get(@NonNull Axes position) {
-    return Optional.ofNullable(map[position.getX()][position.getY()]);
+    return Optional.ofNullable(map[position.getY()][position.getX()]);
   }
 
   public void remove(@NonNull GameObject object) {
@@ -76,7 +76,7 @@ public class Game {
     if (get(object.getPosition()).map(tile -> tile != object).orElse(true))
       throw new NoSuchObjectException(object, get(object.getPosition()));
 
-    map[object.getPosition().getX()][object.getPosition().getY()] = null;
+    map[object.getPosition().getY()][object.getPosition().getX()] = null;
     unstashTreasures();
   }
 

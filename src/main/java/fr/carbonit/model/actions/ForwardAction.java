@@ -18,13 +18,13 @@ public class ForwardAction extends AbstractAction {
   private @NonNull Axes computeNewPosition(@NonNull Game game, @NonNull Adventurer adventurer) {
     return switch (adventurer.getRotation()) {
           case NORD ->
-            adventurer.getPosition().moveXWithin(-1, game.getDimension().getY());
+            adventurer.getPosition().moveXWithin(-1, game.getDimension().getX());
           case EST ->
-            adventurer.getPosition().moveYWithin(1, game.getDimension().getY());
+            adventurer.getPosition().moveYWithin(1, game.getDimension().getX());
           case SUD ->
-            adventurer.getPosition().moveXWithin(1, game.getDimension().getX());
+            adventurer.getPosition().moveXWithin(1, game.getDimension().getY());
           case OUEST ->
-            adventurer.getPosition().moveYWithin(-1, game.getDimension().getX());
+            adventurer.getPosition().moveYWithin(-1, game.getDimension().getY());
         };
   }
 
