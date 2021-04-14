@@ -5,6 +5,7 @@ import lombok.*;
 
 @Getter
 @AllArgsConstructor
+@EqualsAndHashCode
 public abstract class GameObject {
   @NonNull private final GameObjectHeadersEnum header;
 

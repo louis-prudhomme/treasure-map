@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.util.Queue;
 
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 public class Adventurer extends GameObject {
   @NonNull @EqualsAndHashCode.Include
   private final String name;

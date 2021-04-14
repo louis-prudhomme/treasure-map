@@ -5,34 +5,30 @@ import fr.carbonit.model.objects.GameObjectHeadersEnum;
 import fr.carbonit.parser.exception.ParserException;
 import fr.carbonit.parser.exception.SourceFileUnavalaibleException;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
+@RequiredArgsConstructor
 public class CentralParser {
-  @NonNull private final String path;
-
-  @NonNull private final List<GameObject> parsedParameters;
+  @NonNull private final Supplier<Reader> readerSupplier;
+  @NonNull private final List<GameObject> parsedParameters = new ArrayList<>();
 
   @NonNull
   private final Map<GameObjectHeadersEnum, AbstractGameObjectParser<? extends GameObject>>
-      parserMap;
-
-  public CentralParser(@NonNull String path) {
-    this.path = path;
-    this.parsedParameters = new ArrayList<>();
-    this.parserMap =
-        Map.ofEntries(
-            Map.entry(GameObjectHeadersEnum.TREASURE, new TreasureParser()),
-            Map.entry(GameObjectHeadersEnum.MOUNTAIN, new MountainParser()),
-            Map.entry(GameObjectHeadersEnum.ADVENTURER, new AdventurerParser()),
-            Map.entry(GameObjectHeadersEnum.BOARD, new BoardParser()));
-  }
+      parserMap =
+          Map.ofEntries(
+              Map.entry(GameObjectHeadersEnum.TREASURE, new TreasureParser()),
+              Map.entry(GameObjectHeadersEnum.MOUNTAIN, new MountainParser()),
+              Map.entry(GameObjectHeadersEnum.ADVENTURER, new AdventurerParser()),
+              Map.entry(GameObjectHeadersEnum.BOARD, new BoardParser()));
 
   public @NonNull List<GameObject> parseParameters() throws ParserException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+    try (BufferedReader reader = new BufferedReader(readerSupplier.get())) {
       String currentLine = reader.readLine();
 
       while (currentLine != null) {

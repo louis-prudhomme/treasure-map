@@ -11,6 +11,7 @@ import fr.carbonit.model.objects.GameObject;
 import fr.carbonit.model.objects.Treasure;
 import fr.carbonit.utils.ListCastUtils;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.*;
@@ -23,7 +24,7 @@ import static fr.carbonit.model.objects.GameObjectHeadersEnum.*;
 public class Game {
   @NonNull private final Board underlying;
   @NonNull private final Axes dimension;
-  @NonNull private final Queue<Treasure> stash;
+  @NonNull @Getter private final Queue<Treasure> stash;
   private final GameObject[][] map;
 
   public Game(@NonNull Board underlying) {

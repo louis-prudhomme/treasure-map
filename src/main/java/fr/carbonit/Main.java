@@ -14,19 +14,18 @@ import fr.carbonit.utils.ListCastUtils;
 import fr.carbonit.writer.CentralWriter;
 import lombok.NonNull;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
+import java.io.*;
 import java.time.Instant;
 import java.util.List;
 
 public class Main {
-  public static final String FILENAME = Instant.now().getEpochSecond() + ".report";
+  public static final String OUTPUT_FILENAME = Instant.now().getEpochSecond() + ".report";
+  public static String input_filename;
 
   public static void main(@NonNull String[] args) {
     try {
-      CentralParser parser = new CentralParser(args[0]);
+      input_filename = args[0];
+      CentralParser parser = new CentralParser(Main::getReader);
       List<GameObject> parsed = parser.parseParameters();
 
       CentralChecker checker = new CentralChecker(parsed);
@@ -54,7 +53,15 @@ public class Main {
 
   public static Writer getWriter() {
     try {
-      return new FileWriter(FILENAME);
+      return new FileWriter(OUTPUT_FILENAME);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  public static Reader getReader() {
+    try {
+      return new FileReader(input_filename);
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }

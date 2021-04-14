@@ -79,6 +79,6 @@ public class CentralWriterTest {
   @Test
   public void writerGoesThroughListAndPrintsGameTest() {
     toTest.redactReport();
-    assert (StringUtils.difference(stringWriter.toString(), EXPECTED) == "");
+    assert (StringUtils.difference(stringWriter.toString(), EXPECTED).equals(""));
   }
 }
