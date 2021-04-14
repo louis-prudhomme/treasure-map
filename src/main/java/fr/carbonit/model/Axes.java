@@ -9,14 +9,17 @@ public class Axes {
   private final int x;
 
   public boolean isPositionWithin(@NonNull Axes external) {
-    return external.getY() < y && external.getX() < x;
+    return external.getY() < y
+        && external.getX() < x
+        && external.getX() >= 0
+        && external.getY() >= 0;
   }
 
-  public Axes moveXWithin(int qte, int bound) {
-    return new Axes(Math.floorMod(y + qte, bound), x);
+  public Axes moveY(int qte) {
+    return new Axes(y + qte, x);
   }
 
-  public Axes moveYWithin(int qte, int bound) {
-    return new Axes(y, Math.floorMod(x + qte, bound));
+  public Axes moveX(int qte) {
+    return new Axes(y, x + qte);
   }
 }

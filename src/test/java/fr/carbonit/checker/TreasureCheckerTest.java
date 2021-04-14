@@ -36,8 +36,10 @@ public class TreasureCheckerTest {
     testList = List.of(new Treasure(new Axes(-2, 2), 2));
 
     var res = checker.checkParameters(testList);
-    assert (res.size() == 1);
-    assert (res.get(0).getClass() == TreasureIllegalPositionViolation.class);
+    assert (res.size() == 2);
+    assert (res.stream()
+        .map(Object::getClass)
+        .anyMatch(violation -> violation == TreasureIllegalPositionViolation.class));
   }
 
   @Test

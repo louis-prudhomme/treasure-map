@@ -4,14 +4,15 @@ import fr.carbonit.engine.Game;
 import fr.carbonit.model.objects.GameObject;
 import fr.carbonit.model.objects.GameObjectHeadersEnum;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Map;
+import java.util.function.Supplier;
 
+@RequiredArgsConstructor
 public class CentralWriter {
-  @NonNull private static final String PATH = "";
-
   @NonNull
   private static final Map<GameObjectHeadersEnum, AbstractGameObjectWriter<?>> writerMap =
       Map.ofEntries(
@@ -20,23 +21,21 @@ public class CentralWriter {
           Map.entry(GameObjectHeadersEnum.MOUNTAIN, new MountainWriter()),
           Map.entry(GameObjectHeadersEnum.BOARD, new BoardWriter()));
 
-  @NonNull private final String fileName;
   @NonNull private final Game game;
-  @NonNull private FileWriter report;
+  @NonNull private final Supplier<Writer> writerSupplier;
 
-  public CentralWriter(@NonNull String fileName, @NonNull Game game) {
-    this.fileName = fileName;
-    this.game = game;
-  }
+  private Writer report;
 
   public void redactReport() throws IOException {
-    report = new FileWriter(PATH + fileName);
+    report = writerSupplier.get();
+
     writeLineToFile("Endgame:");
     for (GameObject go : game.getGameObjects()) {
       writeLineToFile(writerMap.get(go.getHeader()).writeUncast(go));
     }
     writeLineToFile("Map:");
     writeLineToFile(game.toString());
+
     close();
   }
 

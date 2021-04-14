@@ -1,12 +1,12 @@
 package fr.carbonit.parser;
 
 import fr.carbonit.helpers.AlphabetHelper;
-import fr.carbonit.helpers.CheckedConsumer;
-import fr.carbonit.helpers.CheckedFunction;
 import fr.carbonit.model.actions.ActionEnum;
 import fr.carbonit.model.objects.RotationEnum;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import fr.carbonit.parser.exception.WrongArgumentNumberException;
+import fr.carbonit.utils.CheckedConsumer;
+import fr.carbonit.utils.CheckedFunction;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

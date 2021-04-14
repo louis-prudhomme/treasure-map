@@ -1,10 +1,12 @@
-package fr.carbonit.helpers;
+package fr.carbonit.utils;
+
+import lombok.NonNull;
 
 import java.util.function.Consumer;
 
 @FunctionalInterface
 public interface CheckedConsumer<T> {
-  static <T> Consumer<T> wrap(CheckedConsumer<T> checkedConsumer) {
+  static <T> @NonNull Consumer<T> wrap(@NonNull CheckedConsumer<T> checkedConsumer) {
     return t -> {
       try {
         checkedConsumer.apply(t);

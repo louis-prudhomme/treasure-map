@@ -35,8 +35,10 @@ public class MountainCheckerTest {
     testList = List.of(new Mountain(new Axes(-1, -1)));
 
     var res = checker.checkParameters(testList);
-    assert (res.size() == 1);
-    assert (res.get(0).getClass() == MountainIllegalPositionViolation.class);
+    assert (res.size() == 2);
+    assert (res.stream()
+        .map(Object::getClass)
+        .anyMatch(violation -> violation == MountainIllegalPositionViolation.class));
   }
 
   @Test

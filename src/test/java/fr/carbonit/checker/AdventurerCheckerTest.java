@@ -49,8 +49,10 @@ public class AdventurerCheckerTest {
     testList = List.of(lara);
 
     var res = checker.checkParameters(testList);
-    assert (res.size() == 1);
-    assert (res.get(0).getClass() == AdventurerIllegalPositionViolation.class);
+    assert (res.size() == 2);
+    assert (res.stream()
+        .map(Object::getClass)
+        .anyMatch(violation -> violation == AdventurerIllegalPositionViolation.class));
   }
 
   @Test
