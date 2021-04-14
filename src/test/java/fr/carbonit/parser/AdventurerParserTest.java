@@ -1,6 +1,9 @@
 package fr.carbonit.parser;
 
+import fr.carbonit.helpers.AlphabetHelper;
 import fr.carbonit.helpers.CheckedConsumer;
+import fr.carbonit.helpers.CheckedFunction;
+import fr.carbonit.model.actions.ActionEnum;
 import fr.carbonit.model.objects.RotationEnum;
 import fr.carbonit.parser.exception.WrongArgumentFormatException;
 import fr.carbonit.parser.exception.WrongArgumentNumberException;
@@ -25,13 +28,25 @@ public class AdventurerParserTest {
           .map(RotationEnum::getUnderlying)
           .map(String::valueOf)
           .collect(Collectors.toList());
+  private static final List<String> goodActions =
+      Arrays.stream(ActionEnum.values())
+          .map(ActionEnum::getUnderlying)
+          .map(String::valueOf)
+          .collect(Collectors.toList());
 
   private static final List<String> badRotations =
-      "abcdefghijklmnopqrstuvwxyz"
+      AlphabetHelper.ALPHABET
           .chars()
           .mapToObj(c -> (char) c)
           .map(String::valueOf)
           .filter(o -> !goodRotations.contains(o))
+          .collect(Collectors.toList());
+  private static final List<String> badActions =
+      AlphabetHelper.ALPHABET
+          .chars()
+          .mapToObj(c -> (char) c)
+          .map(String::valueOf)
+          .filter(o -> !goodActions.contains(o))
           .collect(Collectors.toList());
 
   private static AdventurerParser parser;
@@ -70,7 +85,6 @@ public class AdventurerParserTest {
         () -> parser.parseParameter(invalidAdventurerParseArgs));
   }
 
-  @SneakyThrows
   @Test
   public void validRotationsPassTest() {
     goodRotations.forEach(CheckedConsumer.wrap(parser::isRotationParsableOrThrow));
@@ -87,5 +101,25 @@ public class AdventurerParserTest {
       }
     }
     assert (res.size() == badRotations.size());
+    assert (res.size() == AlphabetHelper.ALPHABET.length() - goodRotations.size());
+  }
+
+  @Test
+  public void validActionsPassTest() {
+    goodActions.stream().map(CheckedFunction.wrap(parser::tryParseMovements));
+  }
+
+  @Test
+  public void invalidActionsThrowTest() {
+    var res = new ArrayList<>();
+    for (String action : badActions) {
+      try {
+        parser.tryParseMovements(action);
+      } catch (WrongArgumentFormatException e) {
+        res.add(e);
+      }
+    }
+    assert (res.size() == badActions.size());
+    assert (res.size() == AlphabetHelper.ALPHABET.length() - goodActions.size());
   }
 }

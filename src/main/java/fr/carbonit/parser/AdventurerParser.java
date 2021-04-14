@@ -44,11 +44,7 @@ public class AdventurerParser extends AbstractGameObjectParser<Adventurer> {
 
   public @NonNull Queue<ActionEnum> tryParseMovements(@NonNull String movementsSentence)
       throws WrongArgumentFormatException {
-    if (!movementsSentence
-        .chars()
-        .mapToObj(c -> (char) c)
-        .map(Character::toUpperCase)
-        .allMatch(ActionEnum::isCharKeyOf))
+    if (!movementsSentence.chars().mapToObj(c -> (char) c).allMatch(ActionEnum::isCharKeyOf))
       throw new WrongArgumentFormatException(movementsSentence);
 
     return movementsSentence
